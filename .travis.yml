@@ -14,6 +14,12 @@ matrix:
     - env: ANSIBLE_VERSION='~=2.10.0'
     - env: ANSIBLE_VERSION='~=2.9.0'
     - env: ANSIBLE_VERSION='~=2.8.0'
+# Install expect here since it's just a normal utility and it's needed for
+# reading any playbook errors easily
+addons:
+  apt:
+    packages:
+      - expect
 install:
 - if [ "$ANSIBLE_GIT_VERSION" ]; then pip install "https://github.com/ansible/ansible/archive/${ANSIBLE_GIT_VERSION}.tar.gz";
   else pip install "ansible${ANSIBLE_VERSION}"; fi;
